@@ -6,9 +6,8 @@ Personal portfolio — Denis Doiron, freelance SAP Business One + AWS consultant
 
 - Vite 6 + React 19 + TypeScript (strict)
 - React Router 7
-- react-helmet-async
-- CSS Modules + design tokens
-- Self-hosted Inter + JetBrains Mono via @fontsource-variable
+- CSS Modules + design tokens (global CSS for typography, layout primitives, buttons)
+- Self-hosted Fraunces + Inter + JetBrains Mono via @fontsource-variable
 
 ## Develop
 
