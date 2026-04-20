@@ -114,32 +114,32 @@ const FIT_QS: Array<{
 }> = [
   {
     id: 'stage',
-    label: 'Where is the engagement today?',
+    label: 'What kind of engagement is this?',
     options: [
-      { val: 'greenfield', label: 'New implementation' },
-      { val: 'rescue', label: 'Existing install, needs a senior' },
-      { val: 'addon', label: 'Addon or integration' },
-      { val: 'reporting', label: 'Reporting / BI gap' },
+      { val: 'greenfield', label: 'New SAP Business One implementation' },
+      { val: 'rescue', label: 'Rescue or stabilize an existing install' },
+      { val: 'addon', label: 'SDK addon or customization' },
+      { val: 'reporting', label: 'Reporting, BI, or data' },
     ],
   },
   {
     id: 'shape',
-    label: 'What is the work, really?',
+    label: 'What shape of engagement?',
     options: [
-      { val: 'long-engagement', label: 'Months of delivery' },
-      { val: 'short-engagement', label: 'Weeks of delivery' },
-      { val: 'integration', label: 'Connect B1 to a third party' },
-      { val: 'greenfield', label: 'Build something new' },
+      { val: 'long-engagement', label: 'Multi-month delivery' },
+      { val: 'short-engagement', label: 'Fixed scope, weeks not months' },
+      { val: 'integration', label: 'Third-party integration' },
+      { val: 'greenfield', label: 'Greenfield build on a modern stack' },
     ],
   },
   {
     id: 'need',
-    label: 'What matters most to you?',
+    label: 'What matters most on this engagement?',
     options: [
-      { val: 'depth', label: 'Deep B1 experience' },
-      { val: 'tech', label: 'Strong engineering' },
-      { val: 'ux', label: 'Modern interface' },
-      { val: 'duration', label: 'Scoped end date' },
+      { val: 'depth', label: 'Deep SAP Business One domain experience' },
+      { val: 'tech', label: 'Engineering capability (SDK, performance, integration)' },
+      { val: 'ux', label: 'Modern web interface on top of B1' },
+      { val: 'duration', label: 'A predictable, scoped end date' },
     ],
   },
 ];
