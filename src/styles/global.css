@@ -1,0 +1,292 @@
+/* ============================================================
+   Denis Doiron — global tokens, resets, typography, primitives.
+   Per-component chrome lives in *.module.css next to the TSX.
+   ============================================================ */
+
+:root {
+  /* Type */
+  --font-serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Warm editorial palette */
+  --paper: oklch(97.2% 0.012 78);
+  --paper-2: oklch(94.5% 0.016 78);
+  --paper-3: oklch(91% 0.02 78);
+  --ink: oklch(20% 0.03 262);
+  --ink-2: oklch(28% 0.035 262);
+  --ink-muted: oklch(42% 0.025 262);
+  --ink-soft: oklch(58% 0.018 262);
+  --hairline: oklch(84% 0.018 78);
+  --hairline-strong: oklch(72% 0.022 78);
+  --copper: oklch(62% 0.14 48);
+  --copper-deep: oklch(52% 0.13 48);
+  --focus: oklch(62% 0.15 48);
+
+  /* Layout */
+  --max: 1240px;
+  --gutter: clamp(20px, 4vw, 48px);
+
+  /* Motion */
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  background: var(--paper);
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+button { font: inherit; cursor: pointer; }
+
+::selection { background: var(--ink); color: var(--paper); }
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+/* ------- Type scale ------- */
+
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(52px, 8.5vw, 124px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.display em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--copper-deep);
+}
+
+.h1 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(40px, 5.5vw, 72px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+}
+.h1 em { font-style: italic; font-weight: 300; color: var(--copper-deep); }
+
+.h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+}
+
+.h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+.lead {
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.55;
+  color: var(--ink-muted);
+  letter-spacing: -0.008em;
+  max-width: 64ch;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  font-weight: 500;
+}
+.eyebrow.copper { color: var(--copper-deep); }
+.eyebrow-dot::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--copper);
+  margin-right: 10px;
+  transform: translateY(-2px);
+  animation: pulse 2.4s var(--ease) infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: translateY(-2px) scale(1); }
+  50% { opacity: 0.4; transform: translateY(-2px) scale(0.7); }
+}
+
+.mono { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.02em; }
+
+.prose p {
+  max-width: 64ch;
+  color: var(--ink-muted);
+  font-size: clamp(17px, 1.2vw, 19px);
+  line-height: 1.7;
+}
+.prose p + p { margin-top: 1.2em; }
+
+/* ------- Layout primitives ------- */
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(72px, 10vw, 140px);
+  position: relative;
+}
+.section.tight { padding-block: clamp(48px, 6vw, 80px); }
+
+.band-tinted { background: var(--paper-2); }
+.band-ink {
+  background: var(--ink);
+  color: var(--paper);
+}
+.band-ink .h2, .band-ink .h1, .band-ink .h3 { color: var(--paper); }
+.band-ink .lead, .band-ink .prose p { color: oklch(82% 0.015 78); }
+.band-ink .eyebrow { color: oklch(72% 0.06 48); }
+.band-ink .hairline { background: oklch(36% 0.03 262); }
+
+.hairline {
+  height: 1px;
+  background: var(--hairline);
+  border: none;
+  margin: 0;
+}
+.hairline.strong { background: var(--hairline-strong); }
+
+/* ------- Blueprint grid background ------- */
+
+.blueprint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, oklch(84% 0.018 78 / 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(84% 0.018 78 / 0.45) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 85%);
+}
+.blueprint.fine {
+  background-size: 24px 24px;
+  background-image:
+    linear-gradient(to right, oklch(84% 0.018 78 / 0.3) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(84% 0.018 78 / 0.3) 1px, transparent 1px);
+}
+
+/* ------- Buttons / links ------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 26px;
+  border-radius: 0;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: all 200ms var(--ease);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.btn-primary:hover {
+  background: var(--copper-deep);
+  border-color: var(--copper-deep);
+  transform: translateY(-1px);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hairline-strong);
+}
+.btn-ghost:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn-arrow { transition: transform 200ms var(--ease); }
+.btn:hover .btn-arrow { transform: translateX(4px); }
+
+.tlink {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hairline-strong);
+  padding-bottom: 2px;
+  transition: all 180ms var(--ease);
+  font-weight: 500;
+}
+.tlink:hover {
+  color: var(--copper-deep);
+  border-color: var(--copper);
+}
+
+/* ------- Page header (shared across Services/Experience/Contact) ------- */
+
+.ph {
+  padding: clamp(60px, 10vw, 120px) 0 clamp(40px, 5vw, 60px);
+  border-bottom: 1px solid var(--hairline);
+  position: relative;
+  overflow: hidden;
+}
+.ph h1 { margin: 24px 0 24px; max-width: 18ch; }
+.ph .lead { margin: 0; }
+
+/* ------- Reveal / scroll-reveal ------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: reveal 800ms var(--ease) forwards;
+}
+@keyframes reveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal.d1 { animation-delay: 80ms; }
+.reveal.d2 { animation-delay: 180ms; }
+.reveal.d3 { animation-delay: 300ms; }
+.reveal.d4 { animation-delay: 440ms; }
+.reveal.d5 { animation-delay: 580ms; }
+.reveal.d6 { animation-delay: 720ms; }
+
+.sr {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms var(--ease), transform 700ms var(--ease);
+}
+.sr.in { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .sr { opacity: 1 !important; transform: none !important; animation: none !important; }
+  * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

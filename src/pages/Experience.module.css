@@ -1,0 +1,138 @@
+.narrativeGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 64px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .narrativeGrid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ------- By the numbers (dark band) ------- */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: oklch(36% 0.03 262);
+  border: 1px solid oklch(36% 0.03 262);
+}
+
+.statCell {
+  background: var(--ink);
+  padding: 36px 28px;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.statNum {
+  font-family: var(--font-serif);
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--copper);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.statLabel {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: oklch(72% 0.02 262);
+  line-height: 1.4;
+}
+
+@media (max-width: 900px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ------- Timeline spine ------- */
+
+.spine {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0;
+  position: relative;
+}
+
+.spineYear {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--copper-deep);
+  letter-spacing: 0.1em;
+  padding: 32px 0 32px;
+  border-right: 1px solid var(--hairline-strong);
+  padding-right: 32px;
+  text-align: right;
+  font-weight: 500;
+  position: relative;
+}
+.spineYear::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 40px;
+  width: 7px;
+  height: 7px;
+  background: var(--copper);
+  border-radius: 50%;
+}
+
+.spineBody {
+  padding: 32px 0 32px 32px;
+  border-bottom: 1px solid var(--hairline);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.spineBody:last-child { border-bottom: none; }
+
+@media (max-width: 640px) {
+  .spine { grid-template-columns: 80px 1fr; }
+  .spineYear { padding-right: 16px; font-size: 12px; }
+  .spineBody { padding-left: 20px; font-size: 16px; }
+}
+
+/* ------- Industries list ------- */
+
+.indGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+}
+
+.indCell {
+  background: var(--paper);
+  padding: 28px 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: background 200ms;
+}
+.indCell:hover { background: var(--paper-2); }
+
+.indNum {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--copper-deep);
+  letter-spacing: 0.14em;
+  padding-top: 4px;
+  min-width: 30px;
+}
+
+.indTxt {
+  color: var(--ink-2);
+  font-size: 15.5px;
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  .indGrid { grid-template-columns: 1fr; }
+}

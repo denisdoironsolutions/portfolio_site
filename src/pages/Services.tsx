@@ -1,14 +1,42 @@
-/* Services page */
+import { useMemo, useState } from 'react';
+import type { CSSProperties } from 'react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
+import { usePageTitle } from '../hooks/usePageTitle';
+import ClosingCTA from '../components/ClosingCTA';
+import styles from './Services.module.css';
 
-const { useState: svcUS, useMemo: svcUM } = React;
+type Duration = 'short' | 'medium' | 'long';
+type NumericShapeKey = 'ux' | 'depth' | 'tech';
+type ShapeMetric = Record<NumericShapeKey, number> & { duration: Duration };
 
-const SVC = [
+interface Service {
+  id: string;
+  num: string;
+  heading: string;
+  body: string;
+  tech: string[];
+  ctaLabel: string;
+  subject: string;
+  shape: ShapeMetric;
+  tags: string[];
+}
+
+const SVC: Service[] = [
   {
     id: 'implementation',
     num: '01',
     heading: 'Full-lifecycle SAP Business One delivery',
     body: "End-to-end implementations — discovery, requirements, scope, configuration, data migration, UAT, training, go-live, hypercare — as a senior resource on your partner team. Over a hundred of these across twenty-four years, in manufacturing, distribution, and professional services, at scales from small operators to deployments north of 120 users. You get a predictable senior who knows when to push the customer and when to push back on scope creep.",
-    tech: ['Discovery & process mapping', 'SOW authoring', 'Steering-committee management', 'Configuration & data migration', 'UAT', 'Role-based training', 'Go-live coordination', 'Hypercare & knowledge transfer'],
+    tech: [
+      'Discovery & process mapping',
+      'SOW authoring',
+      'Steering-committee management',
+      'Configuration & data migration',
+      'UAT',
+      'Role-based training',
+      'Go-live coordination',
+      'Hypercare & knowledge transfer',
+    ],
     ctaLabel: 'Discuss an implementation',
     subject: 'SAP B1 implementation — partner inquiry',
     shape: { ux: 4, depth: 5, tech: 2, duration: 'long' },
@@ -19,7 +47,19 @@ const SVC = [
     num: '02',
     heading: 'Custom SDK addons and integrations',
     body: "When your customer needs SAP Business One to do something it doesn't do out of the box, that's my lane. I build production C# addons against the DI API and UI API, integrate the Service Layer with third-party systems, and maintain a reusable addon template that keeps delivery predictable. You scope it, I build it, you deliver it — which keeps your own dev team free for the projects they already have.",
-    tech: ['C#', '.NET Framework 4.8', 'DI API', 'UI API', 'Service Layer', 'SQL Server', 'SAP HANA', 'Crystal Reports', 'Microsoft Graph', 'Authorize.Net', 'EDI X.12'],
+    tech: [
+      'C#',
+      '.NET Framework 4.8',
+      'DI API',
+      'UI API',
+      'Service Layer',
+      'SQL Server',
+      'SAP HANA',
+      'Crystal Reports',
+      'Microsoft Graph',
+      'Authorize.Net',
+      'EDI X.12',
+    ],
     ctaLabel: 'Scope an SDK project',
     subject: 'SAP B1 SDK — partner inquiry',
     shape: { ux: 2, depth: 3, tech: 5, duration: 'medium' },
@@ -30,7 +70,14 @@ const SVC = [
     num: '03',
     heading: 'Reporting, BI and data',
     body: "Twenty years of B1 reporting has given me a wealth of experience extracting and shaping data — across SQL Server and SAP HANA, operational and financial alike. I deliver Crystal Reports end to end, design custom SQL reporting for the visibility your customer actually needs, and — when the reporting story needs more than a static report can offer — I build interactive dashboards.",
-    tech: ['T-SQL', 'SAP HANA SQL', 'Cross-platform queries', 'Crystal Reports', 'Service Layer export', 'Interactive dashboards'],
+    tech: [
+      'T-SQL',
+      'SAP HANA SQL',
+      'Cross-platform queries',
+      'Crystal Reports',
+      'Service Layer export',
+      'Interactive dashboards',
+    ],
     ctaLabel: 'Discuss a reporting need',
     subject: 'Reporting — partner inquiry',
     shape: { ux: 3, depth: 2, tech: 4, duration: 'short' },
@@ -41,7 +88,12 @@ const SVC = [
     num: '04',
     heading: 'Modern stack additions — when the project calls for it',
     body: 'Some customer projects call for more than an ERP change — a cloud-hosted application, a custom web interface, an automated integration that has to scale. When that happens, I bring a full-stack capability: serverless on AWS, React and TypeScript on the front end, and the experience to know when to use these tools and when not to.',
-    tech: ['AWS (Amplify, Lambda, DynamoDB, Cognito, CDK)', 'React + TypeScript', 'Serverless integration', 'Web UI atop ERP'],
+    tech: [
+      'AWS (Amplify, Lambda, DynamoDB, Cognito, CDK)',
+      'React + TypeScript',
+      'Serverless integration',
+      'Web UI atop ERP',
+    ],
     ctaLabel: 'Discuss a cloud-side need',
     subject: 'Cloud / web project — partner inquiry',
     shape: { ux: 5, depth: 3, tech: 5, duration: 'medium' },
@@ -49,9 +101,17 @@ const SVC = [
   },
 ];
 
-/* --- Fit selector: scores services against user-chosen shape --- */
+interface Selection {
+  stage: string;
+  shape: string;
+  need: string;
+}
 
-const FIT_QS = [
+const FIT_QS: Array<{
+  id: keyof Selection;
+  label: string;
+  options: Array<{ val: string; label: string }>;
+}> = [
   {
     id: 'stage',
     label: 'Where is the engagement today?',
@@ -84,46 +144,65 @@ const FIT_QS = [
   },
 ];
 
-function score(svc, sel) {
+function isNumericShapeKey(key: string): key is NumericShapeKey {
+  return key === 'ux' || key === 'depth' || key === 'tech';
+}
+
+function score(svc: Service, sel: Selection): number {
   let s = 0;
   if (sel.stage && svc.tags.includes(sel.stage)) s += 3;
   if (sel.shape && svc.tags.includes(sel.shape)) s += 3;
-  if (sel.need) {
-    if (sel.need === 'duration') s += svc.shape.duration === 'short' ? 3 : svc.shape.duration === 'medium' ? 2 : 1;
-    else s += svc.shape[sel.need] || 0;
+  if (sel.need === 'duration') {
+    s +=
+      svc.shape.duration === 'short' ? 3 : svc.shape.duration === 'medium' ? 2 : 1;
+  } else if (isNumericShapeKey(sel.need)) {
+    s += svc.shape[sel.need];
   }
   return s;
 }
 
 function FitSelector() {
-  const [sel, setSel] = svcUS({ stage: 'greenfield', shape: 'long-engagement', need: 'depth' });
-  const ranked = svcUM(() => {
-    return SVC.map((s) => ({ s, score: score(s, sel) })).sort((a, b) => b.score - a.score);
-  }, [sel]);
+  const [sel, setSel] = useState<Selection>({
+    stage: 'greenfield',
+    shape: 'long-engagement',
+    need: 'depth',
+  });
+  const ranked = useMemo(
+    () =>
+      SVC.map((s) => ({ s, score: score(s, sel) })).sort((a, b) => b.score - a.score),
+    [sel]
+  );
   const top = ranked[0];
   const maxScore = Math.max(...ranked.map((r) => r.score), 1);
 
   return (
-    <section className="fit">
+    <section className={styles.fit}>
       <div className="blueprint" />
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <span className="eyebrow" style={{ color: 'oklch(72% 0.06 48)' }}>— Which service fits?</span>
+          <span className="eyebrow" style={{ color: 'oklch(72% 0.06 48)' }}>
+            — Which service fits?
+          </span>
         </div>
-        <div className="fit-grid">
-          <div className="fit-left">
-            <h2 className="h2" style={{ margin: '0 0 20px' }}>Tell me about the engagement. I'll point you at the right lane.</h2>
-            <p className="lead">Three questions. The recommendation updates live. None of it is binding — consider it a first filter before you write the email.</p>
-            <div className="fit-questions" style={{ marginTop: 40 }}>
+        <div className={styles.fitGrid}>
+          <div className={styles.fitLeft}>
+            <h2 className="h2" style={{ margin: '0 0 20px' }}>
+              Tell me about the engagement. I'll point you at the right lane.
+            </h2>
+            <p className="lead">
+              Three questions. The recommendation updates live. None of it is binding — consider it a first filter before you write the email.
+            </p>
+            <div className={styles.fitQuestions} style={{ marginTop: 40 }}>
               {FIT_QS.map((q) => (
-                <div key={q.id} className="fit-q">
-                  <div className="q-label">{q.label}</div>
-                  <div className="q-options">
+                <div key={q.id} className={styles.fitQ}>
+                  <div className={styles.qLabel}>{q.label}</div>
+                  <div className={styles.qOptions}>
                     {q.options.map((o) => (
                       <button
                         key={o.val}
-                        className={'chip' + (sel[q.id] === o.val ? ' on' : '')}
+                        className={`${styles.chip} ${sel[q.id] === o.val ? styles.chipOn : ''}`}
                         onClick={() => setSel((p) => ({ ...p, [q.id]: o.val }))}
+                        type="button"
                       >
                         {o.label}
                       </button>
@@ -133,25 +212,35 @@ function FitSelector() {
               ))}
             </div>
           </div>
-          <div className="fit-right">
-            <div className="recommend-eyebrow">→ Recommended lane · {String(top.s.num).padStart(2, '0')}</div>
+          <div className={styles.fitRight}>
+            <div className={styles.recommendEyebrow}>
+              → Recommended lane · {String(top.s.num).padStart(2, '0')}
+            </div>
             <h3>{top.s.heading}</h3>
             <p>{top.s.body.split('.')[0]}.</p>
-            <div className="fit-meter">
+            <div className={styles.fitMeter}>
               {ranked.map((r) => {
                 const pct = r.score / maxScore;
                 return (
-                  <div key={r.s.id} className="fit-meter-row">
-                    <div style={{ color: r === top ? 'var(--copper)' : undefined }}>{r.s.heading.split(' ').slice(0, 3).join(' ')}</div>
-                    <div className="fit-bar">
-                      <div className="fit-bar-fill pct" style={{ '--pct': pct.toFixed(2) }} />
+                  <div key={r.s.id} className={styles.fitMeterRow}>
+                    <div style={{ color: r === top ? 'var(--copper)' : undefined }}>
+                      {r.s.heading.split(' ').slice(0, 3).join(' ')}
                     </div>
-                    <div className="fit-bar-val">{Math.round(pct * 100)}</div>
+                    <div className={styles.fitBar}>
+                      <div
+                        className={styles.fitBarFill}
+                        style={{ '--pct': pct.toFixed(2) } as CSSProperties}
+                      />
+                    </div>
+                    <div className={styles.fitBarVal}>{Math.round(pct * 100)}</div>
                   </div>
                 );
               })}
             </div>
-            <a className="fit-cta" href={`mailto:denis@denisdoiron.solutions?subject=${encodeURIComponent(top.s.subject)}`}>
+            <a
+              className={styles.fitCta}
+              href={`mailto:denis@denisdoiron.solutions?subject=${encodeURIComponent(top.s.subject)}`}
+            >
               {top.s.ctaLabel} <span>→</span>
             </a>
           </div>
@@ -161,8 +250,9 @@ function FitSelector() {
   );
 }
 
-function ServicesPage() {
-  useSR();
+export default function Services() {
+  usePageTitle('Services — Denis Doiron');
+  useScrollReveal();
   return (
     <>
       <section className="ph">
@@ -180,20 +270,40 @@ function ServicesPage() {
 
       <section className="section">
         <div className="wrap">
-          <div className="sr" style={{ marginBottom: 32, display: 'flex', alignItems: 'baseline', gap: 24, flexWrap: 'wrap' }}>
+          <div
+            className="sr"
+            style={{
+              marginBottom: 32,
+              display: 'flex',
+              alignItems: 'baseline',
+              gap: 24,
+              flexWrap: 'wrap',
+            }}
+          >
             <span className="eyebrow copper">— Full catalogue</span>
-            <h2 className="h2" style={{ margin: 0 }}>Every lane, in detail.</h2>
+            <h2 className="h2" style={{ margin: 0 }}>
+              Every lane, in detail.
+            </h2>
           </div>
           {SVC.map((s) => (
-            <article key={s.id} className="svc-block sr" id={s.id}>
-              <div className="svc-num">{s.num} / {String(SVC.length).padStart(2, '0')}</div>
-              <div className="svc-body">
+            <article key={s.id} className={`${styles.svcBlock} sr`} id={s.id}>
+              <div className={styles.svcNum}>
+                {s.num} / {String(SVC.length).padStart(2, '0')}
+              </div>
+              <div className={styles.svcBody}>
                 <h3>{s.heading}</h3>
                 <p>{s.body}</p>
-                <div className="svc-tech">
-                  {s.tech.map((t) => <span key={t} className="pill">{t}</span>)}
+                <div className={styles.svcTech}>
+                  {s.tech.map((t) => (
+                    <span key={t} className={styles.pill}>
+                      {t}
+                    </span>
+                  ))}
                 </div>
-                <a className="svc-cta" href={`mailto:denis@denisdoiron.solutions?subject=${encodeURIComponent(s.subject)}`}>
+                <a
+                  className={styles.svcCta}
+                  href={`mailto:denis@denisdoiron.solutions?subject=${encodeURIComponent(s.subject)}`}
+                >
                   {s.ctaLabel} <span>→</span>
                 </a>
               </div>
@@ -203,11 +313,13 @@ function ServicesPage() {
       </section>
 
       <ClosingCTA
-        text={<>Not sure which fits your project? <em>Send a paragraph.</em> I'll tell you honestly whether I'm the right resource.</>}
+        text={
+          <>
+            Not sure which fits your project? <em>Send a paragraph.</em> I'll tell you honestly whether I'm the right resource.
+          </>
+        }
         cta="Send a paragraph"
       />
     </>
   );
 }
-
-Object.assign(window, { ServicesPage });
