@@ -25,7 +25,7 @@ function Hero() {
           </h1>
           <div className={styles.heroMeta}>
             <p className={`lead reveal d3 ${styles.heroLead}`}>
-              Twenty-four years on SAP Business One. 100+ full-lifecycle implementations. Hundreds of integrations shipped and still running. I slot into your partner team, report to your PM, and stay through hypercare — no handoffs, no coordination overhead, no capability gaps.
+              Twenty-four years on SAP Business One. 100+ full-lifecycle implementations. Hundreds of custom solutions shipped and still running. I slot into your partner team, report to your PM, and stay through hypercare — no onboarding, no coordination overhead, no capability gaps.
             </p>
             <div className={`${styles.heroActions} reveal d4`}>
               <a
@@ -187,7 +187,7 @@ function HowIWork() {
               I work through SAP Business One partners and resellers as a senior contract resource. I slot into your team. I report to your PM. I scope carefully, deliver in phases, and stay through hypercare.
             </p>
             <p>
-              When a project needs a custom addon, a cross-platform report, or a modern web interface in front of the ERP, I can build those too. But the foundation of what I do is SAP Business One partner delivery — and that's what I'd rather talk about first.
+              When a project needs a custom addon, a cross-platform report, or a modern web interface in front of the ERP, I can build those too. But the foundation of what I do is SAP Business One partner delivery.
             </p>
           </div>
         </div>
