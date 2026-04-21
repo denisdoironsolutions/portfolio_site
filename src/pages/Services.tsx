@@ -40,11 +40,31 @@ const SVC: Service[] = [
     ctaLabel: 'Discuss an implementation',
     subject: 'SAP B1 implementation — partner inquiry',
     shape: { ux: 4, depth: 5, tech: 2, duration: 'long' },
-    tags: ['long-engagement', 'greenfield', 'rescue'],
+    tags: ['long-engagement', 'greenfield'],
+  },
+  {
+    id: 'recovery',
+    num: '02',
+    heading: 'Project recovery — when the engagement is off the rails',
+    body: "When an SAP Business One implementation is off schedule, over budget, or losing the customer, partners bring me in as an outside senior resource to diagnose the real problem — not just the surface bugs. Usually within the first day I can read the pattern: scope that overpromised, a customer caught in its own politics, consultant depth mismatched to the complexity, or a foundation decision made quickly that's now compounding downstream. I deliver a written correction plan the partner and the customer can both sign off on, and I can stay through the correction or hand back to your team.",
+    tech: [
+      'Same-day situation assessment',
+      'Pattern diagnostic',
+      'Scope reconciliation',
+      'Architecture review',
+      'Root-cause analysis',
+      'Governance & stakeholder alignment',
+      'Correction plan authoring',
+      'Partner & customer liaison',
+    ],
+    ctaLabel: 'Discuss a recovery engagement',
+    subject: 'Project recovery — partner inquiry',
+    shape: { ux: 1, depth: 5, tech: 3, duration: 'medium' },
+    tags: ['rescue', 'short-engagement'],
   },
   {
     id: 'sdk',
-    num: '02',
+    num: '03',
     heading: 'Custom SDK addons and integrations',
     body: "When your customer needs SAP Business One to do something it doesn't do out of the box, that's my lane. I build production C# addons against the DI API and UI API, integrate the Service Layer with third-party systems, and maintain a reusable addon template that keeps delivery predictable. You scope it, I build it, you deliver it — which keeps your own dev team free for the projects they already have.",
     tech: [
@@ -67,7 +87,7 @@ const SVC: Service[] = [
   },
   {
     id: 'reporting',
-    num: '03',
+    num: '04',
     heading: 'Reporting, BI and data',
     body: "Twenty years of B1 reporting has given me a wealth of experience extracting and shaping data — across SQL Server and SAP HANA, operational and financial alike. I deliver Crystal Reports end to end, design custom SQL reporting for the visibility your customer actually needs, and — when the reporting story needs more than a static report can offer — I build interactive dashboards.",
     tech: [
@@ -85,7 +105,7 @@ const SVC: Service[] = [
   },
   {
     id: 'cloud',
-    num: '04',
+    num: '05',
     heading: 'Modern stack additions — when the project calls for it',
     body: 'Some customer projects call for more than an ERP change — a cloud-hosted application, a custom web interface, an automated integration that has to scale. When that happens, I bring a full-stack capability: serverless on AWS, React and TypeScript on the front end, and the experience to know when to use these tools and when not to.',
     tech: [
@@ -261,7 +281,7 @@ export default function Services() {
           <span className="eyebrow copper">— Services</span>
           <h1 className="h1 reveal d1">What I deliver.</h1>
           <p className="lead reveal d2">
-            Four lanes of partner engagement. The first three are the core of the practice. The fourth is what I bring when a project needs more than the ERP itself can do.
+            Five lanes of partner engagement. Four are core SAP Business One delivery work. The fifth is what I bring when a project needs more than the ERP itself can do.
           </p>
         </div>
       </section>

@@ -4,6 +4,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import { useCountUp } from '../hooks/useCountUp';
 import { usePageTitle } from '../hooks/usePageTitle';
 import ClosingCTA from '../components/ClosingCTA';
+import SignatureStoriesHome from '../components/SignatureStoriesHome';
 import styles from './Home.module.css';
 
 function Hero() {
@@ -18,13 +19,13 @@ function Hero() {
             <span className="eyebrow">Est. 2002 · Freelance since 2007</span>
           </div>
           <h1 className={`display reveal d2 ${styles.heroH1}`}>
-            Senior SAP Business&nbsp;One<br />
-            delivery, <em>slotted into</em><br />
-            your partner team.
+            The full SAP Business&nbsp;One<br />
+            delivery surface —<br />
+            <em>in one senior resource.</em>
           </h1>
           <div className={styles.heroMeta}>
             <p className={`lead reveal d3 ${styles.heroLead}`}>
-              Twenty-four years on SAP Business One. 100+ full-lifecycle implementations. Hundreds of integrations shipped and still running. I work inside your methodology, report to your PM, and stay through hypercare.
+              Twenty-four years on SAP Business One. 100+ full-lifecycle implementations. Hundreds of custom solutions shipped and still running. I slot into your partner team, report to your PM, and stay through hypercare — no onboarding, no coordination overhead, no capability gaps.
             </p>
             <div className={`${styles.heroActions} reveal d4`}>
               <a
@@ -186,7 +187,7 @@ function HowIWork() {
               I work through SAP Business One partners and resellers as a senior contract resource. I slot into your team. I report to your PM. I scope carefully, deliver in phases, and stay through hypercare.
             </p>
             <p>
-              When a project needs a custom addon, a cross-platform report, or a modern web interface in front of the ERP, I can build those too. But the foundation of what I do is SAP Business One partner delivery — and that's what I'd rather talk about first.
+              When a project needs a custom addon, a cross-platform report, or a modern web interface in front of the ERP, I can build those too. But the foundation of what I do is SAP Business One partner delivery.
             </p>
           </div>
         </div>
@@ -230,7 +231,7 @@ function HomeTeasers() {
             flexWrap: 'wrap',
           }}
         >
-          <span className="eyebrow copper">— 03</span>
+          <span className="eyebrow copper">— 04</span>
           <h2 className="h2" style={{ margin: 0 }}>
             Where to go next.
           </h2>
@@ -260,6 +261,7 @@ export default function Home() {
       <Ticker />
       <ValueProps />
       <HowIWork />
+      <SignatureStoriesHome />
       <HomeTeasers />
       <ClosingCTA
         text={
