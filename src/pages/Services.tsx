@@ -291,6 +291,14 @@ export default function Services() {
                 {s.num} / {String(SVC.length).padStart(2, '0')}
               </div>
               <div className={styles.svcBody}>
+                {s.id === 'implementation' && (
+                  <span
+                    className="eyebrow copper"
+                    style={{ display: 'block', marginBottom: 12 }}
+                  >
+                    — Also: rescue work, when the engagement is already in trouble
+                  </span>
+                )}
                 <h3>{s.heading}</h3>
                 <p>{s.body}</p>
                 <div className={styles.svcTech}>

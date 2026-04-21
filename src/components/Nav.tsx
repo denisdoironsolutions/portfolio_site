@@ -4,6 +4,7 @@ import styles from './Nav.module.css';
 
 const items = [
   { to: '/services', label: 'Services' },
+  { to: '/stories', label: 'Stories' },
   { to: '/experience', label: 'Experience' },
   { to: '/contact', label: 'Contact' },
 ];
