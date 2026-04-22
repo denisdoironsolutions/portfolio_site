@@ -33,6 +33,9 @@ export default function Footer() {
         <span>© 2026 Denis Doiron — All rights reserved</span>
         <span>Montréal · Canada</span>
       </div>
+      <p className={styles.legal}>
+        SAP and SAP Business One are trademarks or registered trademarks of SAP SE in Germany and other countries. This site is not affiliated with, endorsed by, or sponsored by SAP SE.
+      </p>
     </footer>
   );
 }
