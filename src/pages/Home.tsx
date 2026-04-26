@@ -152,6 +152,13 @@ function ValueProps() {
               SDK addons, payment gateways, EDI pipelines, cross-platform reporting — still running in production for customers across the globe.
             </p>
           </div>
+          <div className={styles.vpCell}>
+            <div className={styles.vpNum}>Rescue</div>
+            <h3 className={styles.vpTitle}>Project recovery when an engagement is off the rails.</h3>
+            <p className={styles.vpSupport}>
+              Outside senior eyes on stuck implementations — a written diagnostic and correction plan the partner and customer can both sign off on, with hands-on follow-through if you need it.
+            </p>
+          </div>
         </div>
       </div>
     </section>
