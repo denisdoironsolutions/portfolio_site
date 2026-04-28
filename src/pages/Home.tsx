@@ -139,17 +139,17 @@ function ValueProps() {
         </div>
         <div className={`${styles.vpGrid} sr`}>
           <div className={styles.vpCell}>
-            <div className={styles.vpNum}>100+</div>
-            <h3 className={styles.vpTitle}>Successful full-lifecycle implementations.</h3>
+            <div className={styles.vpNum}>Net&nbsp;New</div>
+            <h3 className={styles.vpTitle}>100+ successful full-lifecycle implementations.</h3>
             <p className={styles.vpSupport}>
               Delivered across manufacturing, distribution, and professional services — from small operators to deployments north of 120 users.
             </p>
           </div>
           <div className={styles.vpCell}>
-            <div className={styles.vpNum}>Hundreds</div>
-            <h3 className={styles.vpTitle}>Custom solutions and integrations shipped.</h3>
+            <div className={styles.vpNum}>Retention</div>
+            <h3 className={styles.vpTitle}>Health Check engagements that grow your existing customer base.</h3>
             <p className={styles.vpSupport}>
-              SDK addons, payment gateways, EDI pipelines, cross-platform reporting — still running in production for customers across the globe.
+              Half-day working sessions inside your existing customers — surfacing the streamline, automate, and integrate engagements they're already glad to fund. Runs alongside your net-new motion, never against it.
             </p>
           </div>
           <div className={styles.vpCell}>
@@ -157,6 +157,22 @@ function ValueProps() {
             <h3 className={styles.vpTitle}>Project recovery when an engagement is off the rails.</h3>
             <p className={styles.vpSupport}>
               Outside senior eyes on stuck implementations — a written diagnostic and correction plan the partner and customer can both sign off on, with hands-on follow-through if you need it.
+            </p>
+          </div>
+        </div>
+        <div className={`${styles.vpGridSecondary} sr`}>
+          <div className={styles.vpCellSmall}>
+            <div className={styles.vpNumSmall}>Custom</div>
+            <h3 className={styles.vpTitleSmall}>Custom solutions and integrations.</h3>
+            <p className={styles.vpSupport}>
+              SDK addons, payment gateways, EDI pipelines — still running in production for customers across the globe.
+            </p>
+          </div>
+          <div className={styles.vpCellSmall}>
+            <div className={styles.vpNumSmall}>BI</div>
+            <h3 className={styles.vpTitleSmall}>Reporting, BI, and data.</h3>
+            <p className={styles.vpSupport}>
+              Crystal Reports, custom SQL, and interactive dashboards across SQL Server and SAP HANA.
             </p>
           </div>
         </div>

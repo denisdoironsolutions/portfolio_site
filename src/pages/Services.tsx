@@ -63,8 +63,27 @@ const SVC: Service[] = [
     tags: ['rescue', 'short-engagement'],
   },
   {
-    id: 'sdk',
+    id: 'health-check',
     num: '03',
+    heading: 'Health Check — unlock the next engagement inside your existing book',
+    body: "A focused working session I run with one of your existing customers — usually a half-day on site or remote — to surface the streamline, automate, and integrate engagements they'd already be glad to fund. Most partner practices earn 40% of revenue from existing customers when the industry benchmark sits at 70–80%. The gap isn't effort; it's that nobody has been inside the operation lately asking the right questions. I come in as outside senior eyes, hand you and the customer a written scope with auditable ROI math the controller can champion, and route the work back to your delivery team. Runs alongside your net-new motion, never against it.",
+    tech: [
+      'Customer-operation walkthrough',
+      'Streamline / automate / integrate scoping',
+      'Process-cost quantification',
+      'Auditable ROI math',
+      'Written engagement brief',
+      'Controller / CFO-ready framing',
+      'Hand-back to your delivery team',
+    ],
+    ctaLabel: 'Discuss a Health Check',
+    subject: 'Health Check — partner inquiry',
+    shape: { ux: 1, depth: 5, tech: 1, duration: 'short' },
+    tags: ['short-engagement', 'retention'],
+  },
+  {
+    id: 'sdk',
+    num: '04',
     heading: 'Custom SDK addons and integrations',
     body: "When your customer needs SAP Business One to do something it doesn't do out of the box, that's my lane. I build production C# addons against the DI API and UI API, integrate the Service Layer with third-party systems, and maintain a reusable addon template that keeps delivery predictable. You scope it, I build it, you deliver it — which keeps your own dev team free for the projects they already have.",
     tech: [
@@ -87,7 +106,7 @@ const SVC: Service[] = [
   },
   {
     id: 'reporting',
-    num: '04',
+    num: '05',
     heading: 'Reporting, BI and data',
     body: "Twenty years of B1 reporting has given me a wealth of experience extracting and shaping data — across SQL Server and SAP HANA, operational and financial alike. I deliver Crystal Reports end to end, design custom SQL reporting for the visibility your customer actually needs, and — when the reporting story needs more than a static report can offer — I build interactive dashboards.",
     tech: [
@@ -105,7 +124,7 @@ const SVC: Service[] = [
   },
   {
     id: 'cloud',
-    num: '05',
+    num: '06',
     heading: 'Modern stack additions — when the project calls for it',
     body: 'Some customer projects call for more than an ERP change — a cloud-hosted application, a custom web interface, an automated integration that has to scale. When that happens, I bring a full-stack capability: serverless on AWS, React and TypeScript on the front end, and the experience to know when to use these tools and when not to.',
     tech: [
@@ -138,6 +157,7 @@ const FIT_QS: Array<{
     options: [
       { val: 'greenfield', label: 'New SAP Business One implementation' },
       { val: 'rescue', label: 'Rescue or stabilize an existing install' },
+      { val: 'retention', label: 'Existing-customer growth (Health Check)' },
       { val: 'addon', label: 'SDK addon or customization' },
       { val: 'reporting', label: 'Reporting, BI, or data' },
     ],
@@ -281,7 +301,7 @@ export default function Services() {
           <span className="eyebrow copper">— Services</span>
           <h1 className="h1 reveal d1">What I deliver.</h1>
           <p className="lead reveal d2">
-            Five lanes of partner engagement. Four are core SAP Business One delivery work. The fifth is what I bring when a project needs more than the ERP itself can do.
+            Six lanes of partner engagement. Five are core SAP Business One delivery work. The sixth is what I bring when a project needs more than the ERP itself can do.
           </p>
         </div>
       </section>
