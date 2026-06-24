@@ -74,43 +74,37 @@ function Ticker() {
   const n4 = useCountUp(100, { active, duration: 1800 });
 
   return (
-    <div className={styles.ticker} ref={ref}>
+    <div className={styles.statement} ref={ref}>
       <div className="wrap">
-        <div className={styles.tickerRow}>
-          <div className={styles.tickerCell}>
-            <div className={styles.tickerNum}>
-              <span>{Math.floor(n1)}</span>
-              <span className={styles.suffix}>+</span>
-            </div>
-            <div className={styles.tickerLabel}>
-              Full-lifecycle<br />implementations
-            </div>
-          </div>
-          <div className={styles.tickerCell}>
-            <div className={styles.tickerNum}>
-              <span>{Math.floor(n2)}</span>
-            </div>
-            <div className={styles.tickerLabel}>
-              Years on<br />SAP Business One
-            </div>
-          </div>
-          <div className={styles.tickerCell}>
-            <div className={styles.tickerNum}>
-              <span>{Math.floor(n3)}</span>
-            </div>
-            <div className={styles.tickerLabel}>
-              Years freelance<br />for partners
-            </div>
-          </div>
-          <div className={styles.tickerCell}>
-            <div className={styles.tickerNum}>
-              <span>{Math.floor(n4)}s</span>
-              <span className={styles.suffix}>+</span>
-            </div>
-            <div className={styles.tickerLabel}>
-              Custom solutions<br />&amp; integrations
-            </div>
-          </div>
+        <div className={styles.stmtHead}>
+          <span className="eyebrow">Statement of experience</span>
+          <span className={styles.stmtAsOf}>As of 2026</span>
+        </div>
+        <div className={styles.stmtRow}>
+          <span className={styles.stmtLabel}>Full-lifecycle implementations</span>
+          <span className={styles.stmtFig}>
+            {Math.floor(n1)}
+            <span className={styles.stmtPlus}>+</span>
+          </span>
+        </div>
+        <div className={styles.stmtRow}>
+          <span className={styles.stmtLabel}>Years on SAP Business One</span>
+          <span className={styles.stmtFig}>{Math.floor(n2)}</span>
+        </div>
+        <div className={styles.stmtRow}>
+          <span className={styles.stmtLabel}>Years freelance for partners</span>
+          <span className={styles.stmtFig}>{Math.floor(n3)}</span>
+        </div>
+        <div className={styles.stmtRow}>
+          <span className={styles.stmtLabel}>Custom solutions &amp; integrations</span>
+          <span className={styles.stmtFig}>
+            {Math.floor(n4)}s
+            <span className={styles.stmtPlus}>+</span>
+          </span>
+        </div>
+        <div className={styles.stmtTotal}>
+          <span className={styles.stmtTotalLabel}>Delivery surface</span>
+          <span className={styles.stmtTotalVal}>Complete — one resource</span>
         </div>
       </div>
     </div>

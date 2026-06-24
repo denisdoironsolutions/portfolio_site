@@ -10,8 +10,8 @@
 
 .fit :global(.blueprint) {
   background-image:
-    linear-gradient(to right, oklch(40% 0.04 262 / 0.5) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(40% 0.04 262 / 0.5) 1px, transparent 1px);
+    linear-gradient(to right, rgb(60 60 57 / 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(60 60 57 / 0.5) 1px, transparent 1px);
   mask-image: radial-gradient(ellipse 70% 60% at 30% 50%, black 10%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 30% 50%, black 10%, transparent 70%);
 }
@@ -30,7 +30,7 @@
 }
 
 .fitLeft :global(.lead) {
-  color: oklch(78% 0.015 78);
+  color: #C9C7C0;
   margin-bottom: 40px;
 }
 
@@ -45,7 +45,7 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: oklch(72% 0.06 48);
+  color: #C77B7B;
   margin-bottom: 14px;
 }
 
@@ -58,8 +58,8 @@
 .chip {
   padding: 10px 18px;
   background: transparent;
-  border: 1px solid oklch(36% 0.03 262);
-  color: oklch(82% 0.015 78);
+  border: 1px solid #3A3A37;
+  color: #C9C7C0;
   font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
@@ -82,8 +82,8 @@
 }
 
 .fitRight {
-  background: oklch(26% 0.03 262);
-  border: 1px solid oklch(36% 0.03 262);
+  background: #232220;
+  border: 1px solid #3A3A37;
   padding: 40px;
   min-height: 360px;
   display: flex;
@@ -95,7 +95,7 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: oklch(72% 0.06 48);
+  color: #C77B7B;
   margin-bottom: 14px;
 }
 
@@ -110,7 +110,7 @@
 }
 
 .fitRight p {
-  color: oklch(82% 0.015 78);
+  color: #C9C7C0;
   font-size: 15px;
   line-height: 1.6;
   margin: 0 0 24px;
@@ -133,12 +133,12 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: oklch(72% 0.02 262);
+  color: #B7B5AE;
 }
 
 .fitBar {
   height: 4px;
-  background: oklch(36% 0.03 262);
+  background: #3A3A37;
   position: relative;
   overflow: hidden;
 }
@@ -167,7 +167,7 @@
   font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  border-top: 1px solid oklch(36% 0.03 262);
+  border-top: 1px solid #3A3A37;
   padding-top: 20px;
   transition: color 180ms;
 }
