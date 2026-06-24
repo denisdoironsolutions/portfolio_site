@@ -98,6 +98,10 @@ export default function Experience() {
                 <div className={styles.statLabel}>{s.l}</div>
               </div>
             ))}
+            <div className={styles.statTotal}>
+              <span className={styles.statTotalLabel}>Delivery surface</span>
+              <span className={styles.statTotalVal}>Complete — one resource</span>
+            </div>
           </div>
         </div>
       </section>

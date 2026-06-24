@@ -31,8 +31,9 @@
 .cardNum {
   font-family: var(--font-serif);
   font-size: clamp(72px, 9vw, 128px);
-  font-weight: 300;
-  font-style: italic;
+  font-weight: 500;
+  font-style: normal;
+  font-variant-numeric: tabular-nums;
   color: var(--copper-deep);
   line-height: 0.9;
   letter-spacing: -0.04em;
@@ -66,7 +67,7 @@
 
 .cardDescriptor {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: 15px;
   line-height: 1.5;
   color: var(--ink-soft);
@@ -84,7 +85,7 @@
 
 .cardOutcome {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(17px, 1.4vw, 20px);
   line-height: 1.4;
   color: var(--copper-deep);

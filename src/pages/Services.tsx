@@ -220,7 +220,7 @@ function FitSelector() {
       <div className="blueprint" />
       <div className="wrap">
         <div style={{ marginBottom: 48 }}>
-          <span className="eyebrow" style={{ color: 'oklch(72% 0.06 48)' }}>
+          <span className="eyebrow" style={{ color: '#C77B7B' }}>
             — Which service fits?
           </span>
         </div>

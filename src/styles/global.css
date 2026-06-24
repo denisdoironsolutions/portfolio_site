@@ -5,23 +5,24 @@
 
 :root {
   /* Type */
-  --font-serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-serif: 'Space Grotesk Variable', 'Segoe UI', system-ui, sans-serif;
   --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  /* Warm editorial palette */
-  --paper: oklch(97.2% 0.012 78);
-  --paper-2: oklch(94.5% 0.016 78);
-  --paper-3: oklch(91% 0.02 78);
-  --ink: oklch(20% 0.03 262);
-  --ink-2: oklch(28% 0.035 262);
-  --ink-muted: oklch(42% 0.025 262);
-  --ink-soft: oklch(58% 0.018 262);
-  --hairline: oklch(84% 0.018 78);
-  --hairline-strong: oklch(72% 0.022 78);
-  --copper: oklch(62% 0.14 48);
-  --copper-deep: oklch(52% 0.13 48);
-  --focus: oklch(62% 0.15 48);
+  /* Ledger palette — cool-neutral paper, true ink, oxblood accent */
+  --paper: #F7F6F3;
+  --paper-2: #EFEEE9;
+  --paper-3: #E6E4DD;
+  --ink: #1A1A1A;
+  --ink-2: #2C2C2A;
+  --ink-muted: #5C5C58;
+  --ink-soft: #86847E;
+  --hairline: #DBD9D2;
+  --hairline-strong: #C4C1B9;
+  --copper: #9A3B3B;
+  --copper-deep: #7C2D2D;
+  --accent-green: #2E4A3F;
+  --focus: #7C2D2D;
 
   /* Layout */
   --max: 1240px;
@@ -70,8 +71,8 @@ button { font: inherit; cursor: pointer; }
   color: var(--ink);
 }
 .display em {
-  font-style: italic;
-  font-weight: 300;
+  font-style: normal;
+  font-weight: 500;
   color: var(--copper-deep);
 }
 
@@ -82,7 +83,7 @@ button { font: inherit; cursor: pointer; }
   line-height: 1.04;
   letter-spacing: -0.03em;
 }
-.h1 em { font-style: italic; font-weight: 300; color: var(--copper-deep); }
+.h1 em { font-style: normal; font-weight: 500; color: var(--copper-deep); }
 
 .h2 {
   font-family: var(--font-serif);
@@ -164,9 +165,9 @@ button { font: inherit; cursor: pointer; }
   color: var(--paper);
 }
 .band-ink .h2, .band-ink .h1, .band-ink .h3 { color: var(--paper); }
-.band-ink .lead, .band-ink .prose p { color: oklch(82% 0.015 78); }
-.band-ink .eyebrow { color: oklch(72% 0.06 48); }
-.band-ink .hairline { background: oklch(36% 0.03 262); }
+.band-ink .lead, .band-ink .prose p { color: #C9C7C0; }
+.band-ink .eyebrow { color: #C77B7B; }
+.band-ink .hairline { background: #3A3A37; }
 
 .hairline {
   height: 1px;
@@ -183,8 +184,8 @@ button { font: inherit; cursor: pointer; }
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to right, oklch(84% 0.018 78 / 0.45) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(84% 0.018 78 / 0.45) 1px, transparent 1px);
+    linear-gradient(to right, rgb(196 193 185 / 0.5) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(196 193 185 / 0.5) 1px, transparent 1px);
   background-size: 80px 80px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 85%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 20%, transparent 85%);
@@ -192,8 +193,8 @@ button { font: inherit; cursor: pointer; }
 .blueprint.fine {
   background-size: 24px 24px;
   background-image:
-    linear-gradient(to right, oklch(84% 0.018 78 / 0.3) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(84% 0.018 78 / 0.3) 1px, transparent 1px);
+    linear-gradient(to right, rgb(196 193 185 / 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(196 193 185 / 0.35) 1px, transparent 1px);
 }
 
 /* ------- Buttons / links ------- */
